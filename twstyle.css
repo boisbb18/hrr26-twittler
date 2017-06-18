@@ -1,0 +1,63 @@
+body{
+	font-family: sans-serif;
+	
+	align-content: center;
+}
+.box{
+	font-weight: bold;
+	margin-left:200px;
+	margin-top:50px;
+	-webkit-transition: all .5s;
+	-webkit-border-radius:5px;
+	line-height:50px;
+	color:#222222;
+	background: #e3e3e3;
+	width:200px;
+	text-align: center;
+	box-shadow:  1px 1px 5px rgba(0,0,0,.5),
+					0px 0px 0px 1px rgba(0,0,0,.1);
+
+}
+a.divlink {
+
+}
+.box:hover{
+	color:white;
+	background: #333;
+	cursor: pointer;
+}
+#tweets{
+
+	margin-left: 20px;
+	margin-top: 5px;
+	position: :relative;
+	top:10px;
+}
+.tweetBox{
+
+	font-size: 15px;
+	width: 600px;
+	background:#e3e3e3;
+	line-height: 50px;
+	color:#333;
+	border-radius: 10px;
+	margin-top: 10px;
+}
+.addingTime{
+	font-size: 10px;
+	position: absolute;
+	left: 550px;
+
+}
+.button{
+	display: inline-block;
+	font-size:  15px;
+	position: static;
+	}
+.addingMessages{
+	font-size: 15px;
+	position: relative;
+	top: -50px;
+	left: 120px;
+	margin-bottom: 50px;
+}

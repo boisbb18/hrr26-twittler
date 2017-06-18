@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="jquery.js"></script>
+    <script src="data_generator.js"></script>
+    <link rel = "stylesheet" href ="twstyle.css">
+  </head>
+  <body bgcolor="#18E1F1">
+
+ <script>
+
+      $(document).ready(function(){
+        var $body = $('body');
+        var $tweetId = $('<div id= "tweets"></div>');
+        $body.html('');
+        var $div = $('<div class ="box">Refresh</div>').appendTo('body');
+        gettingTweets();
+       	 $('.box').click(function(){
+       	 		gettingTweets();
+       	 })
+
+
+        function gettingTweets(){
+        	var index = 0;
+        $("#tweets").html('');
+        while(index < streams.home.length){
+          var tweet = streams.home[index];
+          var dateNow = streams.date[index];
+          var $tweet = $('<div class ="tweetBox"></div>');
+          var $userName = $('<a href = "index2.html" class = "button"></a>');
+          var $message = $('<div class = "addingMessages"></div>');
+          $message.text(': ' + tweet.message);
+          $userName.text('@' + tweet.user);
+          var $timing = $('<span class = "addingTime"></span>');
+          var currentTime = new Date().getTime() / 1000;
+          var passedTime = tweet.created_at.getTime()/1000;
+          var difference = Math.round((currentTime - passedTime)/60);
+          		if (difference < 60){
+         			 $timing.text(''+ difference + ' minutes ago');
+      			} else{
+      				var hour = parseInt(difference/60);
+      				var minutes = parseInt(difference%60);
+      				$timing.text(''+ hour + ' hours  ' + minutes + ' ago.');
+      			}
+      	
+          $timing.appendTo($tweet);
+          $userName.appendTo($tweet);
+      	  $message.appendTo($tweet);
+          $tweet.appendTo($tweetId);
+          index += 1;
+          $('.button').click(function(){
+          	
+          	
+        	var URL =window.location.href;
+        	URL.username = tweet.user;
+          })
+        }
+         $tweetId.appendTo($body);
+        }
+
+
+      });
+    </script>
+
+	
+
+  </body>
+</html>
