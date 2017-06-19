@@ -14,6 +14,12 @@ streams.users.douglascalhoun = [];
 streams.date = [];
 window.users = Object.keys(streams.users);
 
+var newArr = function(name){
+  //var temp = name.slice(1);
+  return streams.home.filter(function(element){
+    return element.user === name;
+  });
+}
 // utility function for adding tweets to our data structures
 var addTweet = function(newTweet){
   var username = newTweet.user;

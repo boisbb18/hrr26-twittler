@@ -12,52 +12,78 @@
       $(document).ready(function(){
         var $body = $('body');
         var $tweetId = $('<div id= "tweets"></div>');
+        var $filtered = $('<div id="filtered"></div>');
         $body.html('');
-        var $div = $('<div class ="box">Refresh</div>').appendTo('body');
+        var $div = $('<div class ="box">Refresh</div>')
+        $div.appendTo('body');
         gettingTweets();
-       	 $('.box').click(function(){
-       	 		gettingTweets();
-       	 })
-
-
+       	 
         function gettingTweets(){
-        	var index = 0;
+          var index = 0;
         $("#tweets").html('');
         while(index < streams.home.length){
           var tweet = streams.home[index];
           var dateNow = streams.date[index];
           var $tweet = $('<div class ="tweetBox"></div>');
-          var $userName = $('<a href = "index2.html" class = "button"></a>');
-          var $message = $('<div class = "addingMessages"></div>');
-          $message.text(': ' + tweet.message);
-          $userName.text('@' + tweet.user);
+          var $test = $('<div></div>');
+          var userName = '<a href=# class="user">' + tweet.user + '</a>'
+            $test.html('@' + userName + ': ' + tweet.message).appendTo($('ul'));
           var $timing = $('<span class = "addingTime"></span>');
           var currentTime = new Date().getTime() / 1000;
           var passedTime = tweet.created_at.getTime()/1000;
           var difference = Math.round((currentTime - passedTime)/60);
-          		if (difference < 60){
-         			 $timing.text(''+ difference + ' minutes ago');
-      			} else{
-      				var hour = parseInt(difference/60);
-      				var minutes = parseInt(difference%60);
-      				$timing.text(''+ hour + ' hours  ' + minutes + ' ago.');
-      			}
-      	
+              if (difference < 60){
+               $timing.text(''+ difference + ' minutes ago');
+            } else{
+              var hour = parseInt(difference/60);
+              var minutes = parseInt(difference%60);
+              $timing.text(''+ hour + ' hours  ' + minutes + ' ago.');
+            }
+        
           $timing.appendTo($tweet);
-          $userName.appendTo($tweet);
-      	  $message.appendTo($tweet);
+          $test.appendTo($tweet);
           $tweet.appendTo($tweetId);
           index += 1;
-          $('.button').click(function(){
-          	
-          	
-        	var URL =window.location.href;
-        	URL.username = tweet.user;
-          })
         }
          $tweetId.appendTo($body);
+
+
         }
 
+         $('.user').click(function(){
+          var username = $(this).text()
+          var newArray = newArr(username);
+          $("#tweets").html('');
+          var index = 0;
+            while(index < newArray.length){
+                var tweet = newArray[index];
+              var dateNow = newArray[index].created_at;
+              var $tweet = $('<div class ="tweetBox"></div>');
+              var $test = $('<div></div>');
+              var userName = '<a href=# class="user">' + tweet.user + '</a>'
+                $test.html('@' + userName + ': ' + tweet.message).appendTo($('ul'));
+              var $timing = $('<span class = "addingTime"></span>');
+              var currentTime = new Date().getTime() / 1000;
+              var passedTime = tweet.created_at.getTime()/1000;
+              var difference = Math.round((currentTime - passedTime)/60);
+                  if (difference < 60){
+                   $timing.text(''+ difference + ' minutes ago');
+                } else{
+                  var hour = parseInt(difference/60);
+                  var minutes = parseInt(difference%60);
+                  $timing.text(''+ hour + ' hours  ' + minutes + ' ago.');
+                }
+        
+          $timing.appendTo($tweet);
+          $test.appendTo($tweet);
+          $tweet.appendTo($tweetId);
+          index += 1;
+        }
+         $tweetId.appendTo($body);
+        });
+          $('.box').click(function(){
+            gettingTweets();
+         }) ;
 
       });
     </script>

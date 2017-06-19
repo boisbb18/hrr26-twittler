@@ -18,21 +18,19 @@ body{
 					0px 0px 0px 1px rgba(0,0,0,.1);
 
 }
-a.divlink {
 
-}
 .box:hover{
 	color:white;
 	background: #333;
 	cursor: pointer;
 }
 #tweets{
-
 	margin-left: 20px;
 	margin-top: 5px;
 	position: :relative;
 	top:10px;
 }
+
 .tweetBox{
 
 	font-size: 15px;
@@ -50,14 +48,11 @@ a.divlink {
 
 }
 .button{
+	text-decoration-color: blue;
 	display: inline-block;
 	font-size:  15px;
-	position: static;
 	}
-.addingMessages{
-	font-size: 15px;
-	position: relative;
-	top: -50px;
-	left: 120px;
-	margin-bottom: 50px;
+.button:hover{
+	color:#18E1F1;
+	cursor: pointer;
 }

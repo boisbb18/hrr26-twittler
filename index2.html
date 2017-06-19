@@ -3,14 +3,17 @@
   <head>
     <script src="jquery.js"></script>
     <script src="data_generator.js"></script>
+    <link rel = "stylesheet" href ="twstyle.css">
   </head>
   	<body bgcolor="#18E1F1">
   		 <script>
 	  		$(document).ready(function(){
-	  		var username = '';
+	  		var username = $('#button').html();
 	        var $body = $('body');
-	        
 	        $body.html('');
+	        var $div = $('<div class ="box"></div>');
+	        $div.text(username);
+	        $div.appendTo('body');
 	        });
 	  		</script>
     </body>
