@@ -11,21 +11,13 @@ streams.users.shawndrost = [];
 streams.users.sharksforcheap = [];
 streams.users.mracus = [];
 streams.users.douglascalhoun = [];
-streams.date = [];
 window.users = Object.keys(streams.users);
 
-var newArr = function(name){
-  //var temp = name.slice(1);
-  return streams.home.filter(function(element){
-    return element.user === name;
-  });
-}
 // utility function for adding tweets to our data structures
 var addTweet = function(newTweet){
   var username = newTweet.user;
   streams.users[username].push(newTweet);
   streams.home.push(newTweet);
-  streams.date.push(newTweet.created_at);
 };
 
 // utility function
@@ -33,7 +25,13 @@ var randomElement = function(array){
   var randomIndex = Math.floor(Math.random() * array.length);
   return array[randomIndex];
 };
-
+var newArr = function(str){
+  var arr = [];
+  arr = streams.home.filter(function(element){
+    return element.user === str;
+  })
+  return arr;
+}
 // random tweet generator
 var opening = ['just', '', '', '', '', 'ask me how i', 'completely', 'nearly', 'productively', 'efficiently', 'last night i', 'the president', 'that wizard', 'a ninja', 'a seedy old man'];
 var verbs = ['downloaded', 'interfaced', 'deployed', 'developed', 'built', 'invented', 'experienced', 'navigated', 'aided', 'enjoyed', 'engineered', 'installed', 'debugged', 'delegated', 'automated', 'formulated', 'systematized', 'overhauled', 'computed'];
